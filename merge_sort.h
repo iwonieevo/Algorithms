@@ -22,9 +22,13 @@ void merge(T *tab, size_t left, size_t right, size_t middle) {
 
 template <typename T>
 void merge_sort(T *tab, size_t left, size_t right) {
-    size_t middle = (left + right) / 2;
-    if(left >= right) {return;} // if one element left
-    merge_sort(tab, left, middle); // merge sort the left side
-    merge_sort(tab, middle + 1, right); // merge sort the right side
-    merge(tab, left, right, middle); // merge 2 sorted arrays
+    if(left >= right) {return;}
+    
+    for(size_t current_size = 1; current_size < (right - left + 1); current_size *= 2) {
+        for(size_t sub_left = left; sub_left <= right - current_size; sub_left += 2*current_size) {
+            size_t sub_middle = (sub_left + current_size - 1 <= right) ? sub_left + current_size - 1 : right;
+            size_t sub_right = (sub_left + 2 * current_size - 1 <= right) ? sub_left + 2 * current_size - 1 : right;
+            if(!(sub_middle - sub_left + 1 <= 0) && !(sub_right - sub_middle <= 0)) {merge(tab, sub_left, sub_right, sub_middle);}
+        }
+    }
 }

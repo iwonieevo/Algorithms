@@ -25,8 +25,8 @@ void heapify(T *tab, size_t left, size_t right, size_t root) {
     size_t s = root;
     T s_val = tab[s];
 
-    while (2 * s + 1 - left <= right) {
-        size_t t = 2 * s + 1 - left; // index of left child
+    while (2 * s - left + 1 <= right) {
+        size_t t = 2 * s  - left + 1; // index of left child
 
         if (t + 1 <= right && tab[t + 1] > tab[t]) {t++;} // if the right child is in bounds and is greater than left child then t <- index of right child (so t is the index of the greater child)
         if (s_val >= tab[t]) {break;} // if the parent is already larger than the bigger child, then the heap property is maintained, so we exit
@@ -59,8 +59,8 @@ void intro_sort_util(T *tab, size_t left, size_t right, size_t max_depth) {
     // otherwise, perform one step of quicksort
     else {
         size_t p = partition(tab, left, right);
-        intro_sort_util(tab, left, p - 1, max_depth - 1);
-        intro_sort_util(tab, p + 1, right, max_depth - 1);
+        if(p > left) {intro_sort_util(tab, left, p, max_depth - 1);}
+        if(p + 1 < right) {intro_sort_util(tab, p + 1, right, max_depth - 1);}
     }
 }
 
