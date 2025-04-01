@@ -1,2 +1,2 @@
-# Algorithms
-Projects created as part of the academic course Designing and analysis of algorithms @WUST
+# Sorting algorithms
+Project created as part of the academic course Designing and analysis of algorithms @WUST
