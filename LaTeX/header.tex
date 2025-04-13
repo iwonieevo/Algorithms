@@ -1,0 +1,63 @@
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{tikz}
+    \usetikzlibrary{
+        arrows,
+        shadows,
+        shapes
+    }
+\usepackage{pgfplots}
+\usepackage[margin = 1.in]{geometry}
+\usepackage{subcaption}
+\usepackage[export]{adjustbox}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{hhline}
+\usepackage{pdflscape}
+\usepackage{url}
+\usepackage{filecontents}
+\usepackage{float}
+\usepackage{csvsimple}
+\usepackage{booktabs}
+\usepackage{makecell}
+
+\pgfplotsset{compat=1.18}
+
+\newcommand{\name}[1]{\sffamily\bfseries\scriptsize #1}
+
+\newcommand{\frontpage}[6]{
+    \noindent
+    \begin{tabularx}{\textwidth}{@{}X@{}l@{}}
+        \begin{tabular}[t]{||m{0.5\textwidth}|m{0.25\textwidth}||}
+            \hhline{|t:==:t|}
+            \multicolumn{2}{||c||}{}\\
+            \multicolumn{2}{||c||}{{\LARGE #1}}\\
+            \multicolumn{2}{||c||}{}\\
+            \hhline{||--||}
+            \name{Kierunek} & \name{Termin}\\
+            \textit{#2} & \textit{#3} \\
+            \hhline{||--||}
+            \name{Imię, nazwisko, numer albumu} & \name{Data}\\
+            \textit{#4} & \textit{#5} \\
+            \hhline{||--||}
+            \multicolumn{2}{||l||}{\name{Link do projektu}} \\
+            \multicolumn{2}{||l||}{\url{#6}} \\
+            \hhline{|b:==:b|}
+        \end{tabular}
+        &
+        \includegraphics[width=2.25cm,valign=T]{PWr.png}
+    \end{tabularx}
+    \vspace{.5cm}
+    
+    \begin{center}
+        \LARGE \textsc{Raport}
+    \end{center}
+    
+    \noindent\rule[0.5cm]{\textwidth}{1pt}
+}
